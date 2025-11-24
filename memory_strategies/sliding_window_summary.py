@@ -1,12 +1,9 @@
-from dotenv import load_dotenv
 from typing import List, Optional
 from langchain_core.messages import BaseMessage, SystemMessage
 from langchain_openai import ChatOpenAI
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 from .base import MemoryStrategy
 
-load_dotenv()
-    
 class SlidingWindowWithSummaryMemory(MemoryStrategy):
     """Keep recent k messages + summary of older messages"""
     
