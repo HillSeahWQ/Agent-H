@@ -182,3 +182,4 @@ pyrightconfig.json
 **/runs
 **/volumes
 **/data
+**/logs
