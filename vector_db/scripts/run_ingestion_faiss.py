@@ -22,11 +22,14 @@ logger = get_logger(__name__)
 # ======================================================================
 PROJECT_ROOT = Path(__file__).resolve().parent.parent  # AGENT-H/vector_db
 DATA_DIR = PROJECT_ROOT / "data" # create a 'data' folder at AGENT-H/vector_db/data
-INPUT_FOLDER_NAME = "test_pdfs"
+INPUT_FOLDER_NAME = "test_pdfs" # TODO: EDIT THIS, INPUT FOLDER NAME - FOLDER WITH ALL THE DOCUMENTS
 INPUT_DIR = DATA_DIR / INPUT_FOLDER_NAME # AGENT-H/vector_db/data/INPUT_FOLDER_NAME
 CHUNKS_DIR = DATA_DIR / "chunks" # AGENT-H/vector_db/chunks
-CHUNKS_OUTPUT_FILE_NAME = f"{INPUT_FOLDER_NAME}_chunks.jsonl"
+CHUNKS_OUTPUT_FILE_NAME = f"{INPUT_FOLDER_NAME}_chunks.json"
 CHUNKS_OUTPUT_FILE_DIR = CHUNKS_DIR / CHUNKS_OUTPUT_FILE_NAME # AGENT-H/vector_db/chunks/CHUNKS_OUTPUT_FILE_NAME
+
+FAISS_INDEX_DIR = DATA_DIR / "faiss_indices"
+FAISS_INDEX_FILE_NAME = f"{INPUT_FOLDER_NAME}_faiss"
 
 EMBEDDING_CONFIG = {
     "text": {
@@ -48,8 +51,8 @@ EMBEDDING_CONFIG = {
 }
 FAISS_CONFIG = {
     "index": {
-        "index_dir": str(DATA_DIR / "faiss_indices"),
-        "name": "kyndryl_document_embeddings", # TODO - EDIT HERE
+        "index_dir": str(DATA_DIR / FAISS_INDEX_DIR),
+        "name": FAISS_INDEX_FILE_NAME,
         "index_type": "Flat",  # Options: Flat, IVF, HNSW
         "metric_type": "IP",  # Options: IP (inner product), L2
         "normalize": True,  # True for cosine similarity with IP metric
