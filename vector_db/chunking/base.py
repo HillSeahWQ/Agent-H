@@ -9,7 +9,7 @@ from typing import List, Dict, Any
 from enum import Enum
 from pathlib import Path
 
-from utils.logger import logging
+from utils.logging.logger import logging
 
 logger = logging.getLogger(__name__)
 

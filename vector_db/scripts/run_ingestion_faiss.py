@@ -12,7 +12,7 @@ sys.path.append(str(Path(__file__).parent.parent))
 
 from embedding.embedding_manager import EmbeddingManager
 from vector_db.faiss_client import FAISSClient
-from utils.logger import get_logger
+from utils.logging.logger import get_logger
 from chunking.base import BaseChunker
 
 logger = get_logger(__name__)
@@ -28,9 +28,8 @@ CHUNKS_DIR = DATA_DIR / "chunks" # AGENT-H/vector_db/chunks
 CHUNKS_OUTPUT_FILE_NAME = f"{INPUT_FOLDER_NAME}_chunks.json"
 CHUNKS_OUTPUT_FILE_DIR = CHUNKS_DIR / CHUNKS_OUTPUT_FILE_NAME # AGENT-H/vector_db/chunks/CHUNKS_OUTPUT_FILE_NAME
 
-FAISS_INDEX_DIR = DATA_DIR / "faiss_indices"
-FAISS_INDEX_FILE_NAME = f"{INPUT_FOLDER_NAME}_faiss"
-
+ACTIVE_EMBEDDING_PROVIDER = "openai"  # or "sentence_transformers"
+ACTIVE_EMBEDDING_TYPE = "text"
 EMBEDDING_CONFIG = {
     "text": {
         # OpenAI embeddings
@@ -49,6 +48,8 @@ EMBEDDING_CONFIG = {
         }
     }
 }
+FAISS_INDEX_DIR = DATA_DIR / "faiss_indices"
+FAISS_INDEX_FILE_NAME = f"{INPUT_FOLDER_NAME}"
 FAISS_CONFIG = {
     "index": {
         "index_dir": str(DATA_DIR / FAISS_INDEX_DIR),
@@ -68,9 +69,29 @@ FAISS_CONFIG = {
         }
     }
 }
-ACTIVE_EMBEDDING_PROVIDER = "openai"  # or "sentence_transformers"
-ACTIVE_EMBEDDING_TYPE = "text"
-
+MILVUS_CONFIG = {
+    "connection": {
+        "host": "localhost",
+        "port": "19530",
+        "alias": "default"
+    },
+    "collection": {
+        "name": "kyndryl_document_embeddings",
+        "description": "Document embeddings with full chunk metadata"
+    },
+    "index": {
+        "index_type": "IVF_FLAT",  # Options: HNSW, IVF_FLAT, IVF_PQ, etc.
+        "metric_type": "IP",  # Options: IP (inner product), L2, COSINE
+        "params": {
+            "nlist": 1024  # For IVF_FLAT
+            # For HNSW: {"M": 16, "efConstruction": 200}
+        }
+    },
+    "search": {
+        "top_k": 5,
+        "params": {}  # Index-specific search params, e.g., {"nprobe": 10} for IVF
+    }
+}
 
 def main():
     """Run FAISS ingestion pipeline WITHOUT argparse."""

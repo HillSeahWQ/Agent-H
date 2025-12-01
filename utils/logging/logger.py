@@ -125,7 +125,7 @@ def setup_logger(
     if log_to_file:
         if log_dir is None:
             # Default to logs directory in project root
-            log_dir = Path(__file__).parent.parent / "logs"
+            log_dir = Path(__file__).parent.parent.parent / "logs"
         
         log_dir = Path(log_dir)
         log_dir.mkdir(parents=True, exist_ok=True)

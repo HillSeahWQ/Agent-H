@@ -19,7 +19,7 @@ from langgraph.graph.message import add_messages
 
 from memory_strategies.base import MemoryStrategy
 from memory_strategies.full_history import FullHistoryMemory
-from utils.logger import get_logger
+from utils.logging.logger import get_logger
 
 logger = get_logger(__name__)
 
@@ -39,7 +39,7 @@ class AgentState(TypedDict):
 # ============================================================================
 # AGENT DEFINITION
 # ============================================================================
-class BasicAgent:
+class BasicReactAgent:
     """
     An asynchronous agentic system that orchestrates LLM reasoning with tool execution.
     
