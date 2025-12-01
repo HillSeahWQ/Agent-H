@@ -9,7 +9,7 @@ from dotenv import load_dotenv
 sys.path.append(str(Path(__file__).parent.parent))
 
 from chunking.pdf_chunker import MultimodalPDFChunker, BaseChunker
-from utils.logger import get_logger
+from utils.logging.logger import get_logger
 
 logger = get_logger(__name__)
 

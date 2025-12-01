@@ -156,7 +156,7 @@ from langchain_openai import ChatOpenAI
 from langchain_core.messages import HumanMessage
 
 from .base import BaseChunker, Chunk, ChunkMetadata, ChunkType
-from utils.logger import get_logger
+from utils.logging.logger import get_logger
 
 logger = get_logger(__name__)
 
