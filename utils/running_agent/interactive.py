@@ -35,7 +35,10 @@ def run_interactive_chat(agent: Any, thread_id: str = "interactive-session", tit
             
             # Process query
             print("\n🤖 Agent: (thinking...)")
-            result = agent.invoke(human_query=user_input, thread_id=thread_id)
+            result = agent.invoke(
+                human_query=user_input,
+                thread_id=thread_id
+            )
             
             # Display response
             print_compact_response(result)
