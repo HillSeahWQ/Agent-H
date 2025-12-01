@@ -1,6 +1,10 @@
 """
 Kyndryl Document RAG Tool
 Searches FAISS vector database for relevant document chunks.
+
+FIXED PARAMS, not dynamically chosen by LLM
+1. Database - Which specific DB/Table to search
+2. Top K - Fixed here in config, avoid LLM deciding
 """
 import sys
 from pathlib import Path
@@ -159,8 +163,7 @@ class KyndrylRAGSearch:
 
 @tool
 def search_kyndryl_documents(
-    query: str,
-    top_k: int = 5
+    query: str
 ) -> str:
     """
     Search Kyndryl documentation for relevant information.
@@ -173,7 +176,6 @@ def search_kyndryl_documents(
     
     Args:
         query: The search query describing what information you need
-        top_k: Number of relevant document chunks to retrieve (default: 5, max: 20)
     
     Returns:
         A formatted string containing the most relevant document chunks with source information
@@ -182,7 +184,7 @@ def search_kyndryl_documents(
         search_kyndryl_documents("What does Kyndryl cover for surgeries?", top_k=3)
     """
     # Validate top_k
-    top_k = max(1, min(top_k, 20))  # Clamp between 1 and 20
+    top_k = max(1, min(DEFAULT_TOP_K, 20))  # Clamp between 1 and 20
     
     logger.info(f"Tool called: search_kyndryl_documents(query='{query}', top_k={top_k})")
     
@@ -230,8 +232,7 @@ def search_kyndryl_documents(
 
 @tool
 def search_kyndryl_documents_detailed(
-    query: str,
-    top_k: int = 5
+    query: str
 ) -> List[Dict[str, Any]]:
     """
     Search Kyndryl documentation and return structured results.
@@ -240,8 +241,7 @@ def search_kyndryl_documents_detailed(
     useful if the agent needs to process results programmatically.
     
     Args:
-        query: The search query
-        top_k: Number of results (default: 5, max: 20)
+        query: The search query by the user
     
     Returns:
         List of dictionaries containing:
@@ -252,7 +252,7 @@ def search_kyndryl_documents_detailed(
         - chunk_type: Type of chunk (text, table, etc.)
         - preview: Short preview of content
     """
-    top_k = max(1, min(top_k, 20))
+    top_k = max(1, min(DEFAULT_TOP_K, 20))
     
     try:
         searcher = KyndrylRAGSearch()
