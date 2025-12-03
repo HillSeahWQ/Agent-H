@@ -12,7 +12,7 @@ sys.path.append(str(Path(__file__).parent.parent))
 
 from embedding.embedding_manager import EmbeddingManager
 from vector_db.faiss_client import FAISSClient
-from utils.logging.logger import get_logger
+from utils.logger import get_logger
 from chunking.base import BaseChunker
 
 logger = get_logger(__name__)

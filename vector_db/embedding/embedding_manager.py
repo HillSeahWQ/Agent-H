@@ -10,7 +10,7 @@ from tqdm import tqdm
 
 from sentence_transformers import SentenceTransformer
 from openai import OpenAI
-from utils.logging.logger import get_logger
+from utils.logger import get_logger
 
 logger = get_logger(__name__)
 
