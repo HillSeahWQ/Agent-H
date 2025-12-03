@@ -7,12 +7,12 @@ from dotenv import load_dotenv
 from typing import List, Optional
 
 # Add parent directory to path
-sys.path.append(str(Path(__file__).parent.parent))
+sys.path.append(str(Path(__file__).parent.parent.parent))
 
-from embedding.embedding_manager import EmbeddingManager
-from vector_db.milvus_client import MilvusClient
-from vector_db.faiss_client import FAISSClient
-from utils.logger import get_logger
+from vector_db.embedding.embedding_manager import EmbeddingManager
+from vector_db.vector_db.milvus_client import MilvusClient
+from vector_db.vector_db.faiss_client import FAISSClient
+from utils.logging.logger import get_logger
 
 logger = get_logger(__name__)
 

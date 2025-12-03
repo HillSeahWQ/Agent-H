@@ -6,10 +6,10 @@ from pathlib import Path
 from dotenv import load_dotenv
 
 # Add parent directory to path
-sys.path.append(str(Path(__file__).parent.parent))
+sys.path.append(str(Path(__file__).parent.parent.parent))
 
-from chunking.pdf_chunker import MultimodalPDFChunker, BaseChunker
-from utils.logger import get_logger
+from vector_db.chunking.pdf_chunker import MultimodalPDFChunker, BaseChunker
+from utils.logging.logger import get_logger
 
 logger = get_logger(__name__)
 

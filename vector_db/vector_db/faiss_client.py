@@ -2,15 +2,19 @@
 FAISS vector database client for ingestion and querying.
 Handles indexing, metadata storage, and search operations.
 """
-import json
-import logging
+import sys
 import pickle
 from typing import List, Dict, Any, Optional
 import numpy as np
 import faiss
 from pathlib import Path
 
-logger = logging.getLogger(__name__)
+# Add parent directory to path
+sys.path.append(str(Path(__file__).parent.parent.parent))
+
+from utils.logging.logger import get_logger
+
+logger = get_logger(__name__)
 
 
 class FAISSClient:

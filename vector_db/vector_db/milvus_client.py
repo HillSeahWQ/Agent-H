@@ -3,7 +3,7 @@ Milvus vector database client for ingestion and querying.
 Handles schema generation, indexing, and search operations.
 """
 import json
-import logging
+import sys
 from typing import List, Dict, Any, Optional
 import numpy as np
 
@@ -16,8 +16,9 @@ from pymilvus import (
     utility
 )
 
-logger = logging.getLogger(__name__)
+from utils.logging.logger import get_logger
 
+logger = get_logger(__name__)
 
 class MilvusClient:
     """Client for Milvus vector database operations."""

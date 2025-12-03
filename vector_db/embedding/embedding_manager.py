@@ -2,7 +2,8 @@
 Embedding manager for handling different embedding models.
 Provides unified interface for text and code embeddings.
 """
-import logging
+import sys
+from pathlib import Path
 from abc import ABC, abstractmethod
 from typing import List, Dict, Any
 import numpy as np
@@ -10,7 +11,11 @@ from tqdm import tqdm
 
 from sentence_transformers import SentenceTransformer
 from openai import OpenAI
-from utils.logger import get_logger
+
+# Add parent directory to path
+sys.path.append(str(Path(__file__).parent.parent.parent))
+
+from utils.logging.logger import get_logger
 
 logger = get_logger(__name__)
 

@@ -142,6 +142,7 @@ metadata : dict
     bounding_boxes : List[Dict]
         Bounding box coordinates of layout elements (e.g. tables, figures, paragraphs) in document coordinate space.
 """
+import sys
 import base64
 import io
 import logging
@@ -156,7 +157,11 @@ from langchain_openai import ChatOpenAI
 from langchain_core.messages import HumanMessage
 
 from .base import BaseChunker, Chunk, ChunkMetadata, ChunkType
-from utils.logger import get_logger
+
+# Add parent directory to path
+sys.path.append(str(Path(__file__).parent.parent.parent))
+
+from utils.logging.logger import get_logger
 
 logger = get_logger(__name__)
 
