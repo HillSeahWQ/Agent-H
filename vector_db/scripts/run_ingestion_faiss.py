@@ -8,12 +8,12 @@ from pathlib import Path
 from dotenv import load_dotenv
 
 # Add parent directory to path
-sys.path.append(str(Path(__file__).parent.parent))
+sys.path.append(str(Path(__file__).parent.parent.parent))
 
-from embedding.embedding_manager import EmbeddingManager
-from vector_db.faiss_client import FAISSClient
+from vector_db.embedding.embedding_manager import EmbeddingManager
+from vector_db.vector_db.faiss_client import FAISSClient
 from utils.logging.logger import get_logger
-from chunking.base import BaseChunker
+from vector_db.chunking.base import BaseChunker
 
 logger = get_logger(__name__)
 

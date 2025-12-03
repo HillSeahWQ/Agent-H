@@ -2,12 +2,16 @@
 Base classes for document chunking.
 Provides abstract interface for extensibility.
 """
+import sys
 import json
 from abc import ABC, abstractmethod
 from dataclasses import dataclass, field
 from typing import List, Dict, Any
 from enum import Enum
 from pathlib import Path
+
+# Add parent directory to path
+sys.path.append(str(Path(__file__).parent.parent.parent))
 
 from utils.logging.logger import logging
 
