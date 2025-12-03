@@ -94,7 +94,7 @@ QUERY_RESULTS_DIR = EVAL_DIR / "query_results"
 
 QUERIES = [
     {"query_id": "q1", "query_text": "How much does Kyndryl cover for surgeries"},
-    {"query_id": "q2", "query_text": "What are the hospitals covered by Kyndryl's insurance policies?"} # "What are the hospitals covered?"
+    {"query_id": "q2", "query_text": "What are the hospitals covered?"} 
 ]
 
 SAVE_RESULTS = True       # True to save automatically
