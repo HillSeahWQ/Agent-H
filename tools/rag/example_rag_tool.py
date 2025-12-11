@@ -37,6 +37,7 @@ VECTOR_DB_DIR = project_root / "vector_db"
 # CHANGE THESE 2 LINES WHEN CREATING A NEW TOOL FILE
 FAISS_INDEX_DIR = VECTOR_DB_DIR / "data" / "faiss_indices"
 FAISS_INDEX_NAME = "YOUR_FAISS_INDEX_NAME"  #TODO: TO_CHANGE, SAME AS IN Agent-H\vector_db\scripts\run_ingestion_faiss.py
+# ALSO THE DOCSTRING OF THE SEARCH TOOL BELOW
 
 # ============================================================================
 # EMBEDDING CONFIG — KEEP CONSTANT ACROSS ALL RAG TOOLS
@@ -133,7 +134,7 @@ class GenericFAISSRAGSearch:
 @tool
 def search_documents(query: str) -> str:
     """
-    Generic FAISS RAG search tool (formatted).
+    [TODO: INPUT DESCRIPTION STRING OF WHAT CONTEXT WOULD REQUIRE THE SPECIFIC DOCUMENTS TO BE SEARCHED]
     """
     top_k = DEFAULT_TOP_K
     searcher = GenericFAISSRAGSearch()

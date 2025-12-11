@@ -32,7 +32,7 @@ logger = get_logger(__name__)
 # Paths - adjust based on your repo structure
 VECTOR_DB_DIR = project_root / "vector_db"
 FAISS_INDEX_DIR = VECTOR_DB_DIR / "data" / "faiss_indices"
-FAISS_INDEX_NAME = "X_docs"
+FAISS_INDEX_NAME = "company_x_docs"
 
 # Embedding configuration - must match what was used during ingestion
 EMBEDDING_CONFIG = {
@@ -166,13 +166,13 @@ def search_X_documents(
     query: str
 ) -> str:
     """
-    Search X documentation for relevant information.
+    Search Company X's documentation for relevant information.
     
     Use this tool when you need to find information about:
-    - X benefits, policies, or procedures
+    - Company X's benefits, policies, or procedures
     - Healthcare coverage, surgeries, hospitals
     - Employee benefits and insurance
-    - Any X-specific documentation
+    - Any Company X's specific documentation
     
     Args:
         query: The search query describing what information you need
